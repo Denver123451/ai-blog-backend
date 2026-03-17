@@ -1,61 +1,98 @@
-# 🚀 Getting started with Strapi
+# AI Blog — Backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Backend for the AI Blog project, built with [Strapi v5](https://strapi.io/).
 
-### `develop`
+## Tech Stack
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- **Strapi v5** — headless CMS
+- **SQLite** — database (for development)
+- **Node.js 20+**
+- **TypeScript**
 
-```
-npm run develop
-# or
-yarn develop
-```
+## Collections
 
-### `start`
+- **Blog** — blog posts collection with fields: `name`, `slug`, `description`, `image`, `content`, `seoTitle`, `seoDescription`
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+## API Endpoints
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/api/blogs` | Get all blogs |
+| GET | `/api/blogs/:documentId` | Get a single blog by documentId |
+| GET | `/api/blogs?filters[slug][$eq]=my-slug` | Get a single blog by slug |
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## Local Development
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start in development mode
+
+```bash
+npm run develop
+```
+
+Admin panel will be available at `http://localhost:1337/admin`
+
+### 3. Build and start in production mode
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## Running with Docker
+
+### Requirements
+
+- [Docker](https://www.docker.com/) and Docker Compose
+
+### 1. Create `.env` file
+
+Copy `.env.example` and fill in the values:
+
+```bash
+cp .env.example .env
+```
+
+### 2. Start the container
+
+```bash
+docker-compose up -d
+```
+
+The app will be available at `http://localhost:1337`
+
+### 3. Stop the container
+
+```bash
+docker-compose down
+```
+
+### 4. View logs
+
+```bash
+docker-compose logs -f
+```
+
+> Database and uploaded files are stored in Docker volumes and persist between restarts.
+
+---
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `HOST` | Server host (default: `0.0.0.0`) |
+| `PORT` | Server port (default: `1337`) |
+| `APP_KEYS` | Application keys |
+| `API_TOKEN_SALT` | Salt for API tokens |
+| `ADMIN_JWT_SECRET` | Secret for admin JWT tokens |
+| `JWT_SECRET` | Secret for user JWT tokens |
