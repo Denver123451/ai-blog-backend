@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_leads",
+  "info": {
+    "singularName": "contact-lead",
+    "pluralName": "contact-leads",
+    "displayName": "Contact Lead",
+    "description": "Contact form submissions"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

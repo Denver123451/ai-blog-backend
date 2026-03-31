@@ -465,12 +465,13 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
 export interface ApiContactLeadContactLead extends Struct.CollectionTypeSchema {
   collectionName: 'contact_leads';
   info: {
-    displayName: 'contact-lead';
+    description: 'Contact form submissions';
+    displayName: 'Contact Lead';
     pluralName: 'contact-leads';
     singularName: 'contact-lead';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -483,6 +484,7 @@ export interface ApiContactLeadContactLead extends Struct.CollectionTypeSchema {
       'api::contact-lead.contact-lead'
     > &
       Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
